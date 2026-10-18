@@ -2,11 +2,11 @@
 ## Docs: https://hexo.io/docs/configuration.html
 
 # Site
-title: 小舟的笔记
-subtitle: '把踩过的坑，留成能复用的路'
-description: '技术笔记：密码学、逆向、前端工程与那些让人熬夜的边界情况。'
-keywords: 技术笔记,密码学,CTF,逆向
-author: 小舟
+title: amydam's blog
+subtitle: '^-^'
+description: '技术笔记：crypto,web,ai与那些让人熬夜的边界情况。'
+keywords: crypto,web,ai
+author: amydam
 language: zh-CN
 timezone: 'Asia/Shanghai'
 
