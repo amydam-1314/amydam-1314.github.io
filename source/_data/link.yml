@@ -1,0 +1,9 @@
+# 友链数据
+# 加人就在 link_list 下面按格式追加一条，保存后刷新页面即可
+- class_name: 朋友们
+  class_desc: 常看的站，都不错
+  link_list:
+    - name: amydam
+      link: https://github.com/amydam-1314
+      avatar: /img/avatar.jpg
+      descr: 这个博客的主人
