@@ -460,7 +460,7 @@ busuanzi:
 # if you set it to false, it will load mathjax/katex script according to your setting (add the 'mathjax: true' or 'katex: true' in page's front-matter)
 math:
   # Choose: mathjax, katex
-  # Leave it empty if you don't need math
+  # 留空：主题自带的加载没生效（5.7 里没注入脚本），改用 inject.head 手写加载
   use:
   per_page: true
   hide_scrollbar: false
@@ -1075,6 +1075,13 @@ inject:
       #page-header.full_page #site-title,
       #page-header.full_page #site-subtitle{text-shadow:0 2px 16px rgba(6,22,45,.5)}
       #web_bg{will-change:filter}
+      </style>
+    # KaTeX 样式（公式由 markdown-it-katex 在构建时渲染成 HTML）
+    - <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.19.0/dist/katex.min.css">
+    # 行内公式块在窄屏可横向滚动，避免撑破布局
+    - |
+      <style>
+      .katex-display{overflow-x:auto;overflow-y:hidden;padding:4px 0}
       </style>
   bottom:
     # 首屏清晰，往下滚动逐渐模糊

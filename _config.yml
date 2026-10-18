@@ -89,6 +89,23 @@ ignore:
 # Extensions
 theme: butterfly
 
+# Markdown 渲染：markdown-it + KaTeX
+# 公式在构建时渲染成 HTML，不依赖客户端 JS，也不受换行影响
+markdown:
+  preset: 'default'
+  render:
+    html: true
+    xhtmlOut: false
+    breaks: true
+    linkify: true
+    typographer: false
+  plugins:
+    - markdown-it-katex
+  anchors:
+    level: 2
+    collisionSuffix: ''
+    permalink: false
+
 # Search
 search:
   path: search.xml
