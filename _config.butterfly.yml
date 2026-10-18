@@ -55,7 +55,7 @@ social:
 favicon: /img/favicon.png
 
 avatar:
-  img: /img/butterfly-icon.png
+  img: /img/avatar.jpg
   effect: false
 
 # Disable all banner images
@@ -65,7 +65,7 @@ disable_top_img: false
 default_top_img:
 
 # The banner image of index page
-index_img:
+index_img: /img/wallpaper.jpg
 
 # The banner image of archive page
 archive_img:
@@ -1064,7 +1064,9 @@ css_prefix: true
 # Insert the code to head (before '</head>' tag) and the bottom (before '</body>' tag)
 inject:
   head:
-    # - <link rel="stylesheet" href="/xxx.css">
+    # 内页（归档/标签/关于）顶部 banner：默认是纯蓝 #49b1f5，改成浅蓝渐变
+    # 首页不受影响，首页用的是 index_img 的图（inline style 优先级更高）
+    - '<style>#page-header.not-home-page{background-image:linear-gradient(135deg,#e8f2ff 0%,#d3e5fa 60%,#c6dbf6 100%)}</style>'
   bottom:
     # - <script src="xxxx"></script>
 
