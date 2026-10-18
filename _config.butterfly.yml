@@ -101,7 +101,7 @@ footer_img: false
 # background:
 #   - /img/sky.svg
 #   - /img/mesh.svg
-background: /img/wallpaper.jpg
+background: /img/wallpaper.webp
 
 cover:
   # Disable the cover or not
@@ -1080,7 +1080,7 @@ inject:
     # KaTeX 样式（本地，不走 jsdelivr——那边在国内要 3 秒）
     - <link rel="stylesheet" href="/css/katex.min.css">
     # 壁纸提前开始下载，首屏背景更快出现
-    - <link rel="preload" as="image" href="/img/wallpaper.jpg">
+    - <link rel="preload" as="image" href="/img/wallpaper.webp">
     # 行内公式块在窄屏可横向滚动，避免撑破布局
     - |
       <style>
