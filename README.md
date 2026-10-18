@@ -1,4 +1,4 @@
-# 小舟的笔记
+# amydam的笔记
 
 基于 **Hexo 8.1.2** 的静态博客，部署在 GitHub Pages。
 
