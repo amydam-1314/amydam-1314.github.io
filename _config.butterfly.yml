@@ -1066,15 +1066,18 @@ css_prefix: true
 # Insert the code to head (before '</head>' tag) and the bottom (before '</body>' tag)
 inject:
   head:
-    # 内页（归档/标签/关于）顶部 banner：默认是纯蓝 #49b1f5，改成浅蓝渐变
+    # 内页 banner 全部透明，直接透出全站壁纸
+    # 注意：文章页的 header class 是 post-bg，不是 not-home-page，两个都要写
     - |
       <style>
-      #page-header.not-home-page{background-image:linear-gradient(135deg,#e8f2ff 0%,#d3e5fa 60%,#c6dbf6 100%)}
+      #page-header.not-home-page,
+      #page-header.post-bg{background-color:transparent!important}
+      #page-header.not-home-page{background-image:none!important}
       /* 首页 banner 透明：让全站背景壁纸从顶部连续铺满 */
       #page-header.full_page{background-color:transparent!important;background-image:none!important}
-      /* 标题压在插画上，加投影保证可读 */
-      #page-header.full_page #site-title,
-      #page-header.full_page #site-subtitle{text-shadow:0 2px 16px rgba(6,22,45,.5)}
+      /* 标题压在壁纸上，加投影保证可读 */
+      #page-header #site-title,
+      #page-header #site-subtitle{text-shadow:0 2px 16px rgba(6,22,45,.5)}
       #web_bg{will-change:filter}
       </style>
     # KaTeX 样式（本地，不走 jsdelivr——那边在国内要 3 秒）
