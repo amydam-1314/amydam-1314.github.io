@@ -104,12 +104,15 @@ Actions 会自动跑 `hexo generate` 并部署，约一分钟生效。**不需�
 
 ```
 ├── _config.yml              # 站点配置
+├── _config.butterfly.yml    # 主题配置（1132 行，改样式改这里）
 ├── package.json             # 依赖与 hexo 版本
 ├── source/
 │   ├── _posts/              # ← 文章都放这里
-│   └── _drafts/             # 草稿
+│   ├── _drafts/             # 草稿
+│   ├── about/index.md       # 关于页（type: about）
+│   └── tags/index.md        # 标签总览页（type: tags）
 ├── scaffolds/               # hexo new 的模板
-├── themes/                  # 第三方主题装这里（当前用 npm 包形式的 landscape）
+├── themes/                  # 空的，主题走 npm 包
 ├── public/                  # 生成产物，已 gitignore
 └── .github/workflows/deploy.yml
 ```
@@ -118,21 +121,36 @@ Actions 会自动跑 `hexo generate` 并部署，约一分钟生效。**不需�
 
 ---
 
-## 六、换主题
+## 六、主题：Butterfly
 
-主题以 npm 包形式安装最省事：
+当前是 [Butterfly](https://butterfly.js.org/) **5.7.0**，以 npm 包形式装在 `node_modules/hexo-theme-butterfly`，所以 `themes/` 目录是空的。
+
+**改样式不要碰 `node_modules`**，配置全在根目录的 `_config.butterfly.yml`。那份文件 1132 行，别被吓到——99% 是带注释的默认值，你只用改想看的那几段。
+
+已经配好的：
+
+| 配置项 | 现在的值 |
+|---|---|
+| `menu` | 首页 / 归档 / 标签 / 关于 |
+| `social` | GitHub 链接 |
+| `subtitle` | 打字机效果，两行文案（`sub` 数组里改） |
+| `search.use` | `local_search`，本地搜索，靠 `hexo-generator-searchdb` |
+| `darkmode` | 已开，右上角可手动切换 |
+| `index_layout` | `3`，封面左右交替 |
+| `avatar` | 暂时是主题自带的蝴蝶图标 |
+| `index_img` | 空，所以首页 banner 是默认渐变 |
+
+想给首页加一张头图：`_config.butterfly.yml` 的 `index_img: /img/xxx.jpg`，图片放 `source/img/`。
+
+### 换别的主题
 
 ```bash
-npm install hexo-theme-next
+npm install hexo-theme-xxx
 ```
 
-然后在 `_config.yml` 里改：
+`_config.yml` 改 `theme: xxx`，主题配置写到根目录 `_config.xxx.yml`。
 
-```yaml
-theme: next
-```
-
-主题专属配置写到 `_config/themes/next.yml`（`_config.<主题名>.yml` 这种叫法已被 Hexo 5+ 弃用）。
+> 老教程里写的 `_config/themes/主题名.yml` 是 Hexo 5 之前的约定，现在不生效了。
 
 ---
 
@@ -145,5 +163,9 @@ theme: next
 **CSS 丢失、链接全 404** → `_config.yml` 的 `url` 或 `root` 写错了。
 
 **`hexo` 命令报 "not a hexo folder"** → `package.json` 里的 `hexo.version` 字段丢了，补上 `"hexo": { "version": "8.1.2" }`。
+
+**`/tags/` 或 `/about/` 404** → 这两个页面不会自动生成，需要在 `source/` 下自己建。`hexo new page tags` 后把 frontmatter 改成 `type: tags`；关于页是 `type: about`。归档 `/archives/` 才是自动生成的。
+
+**Butterfly 构建报模板找不到** → 缺 `hexo-renderer-pug`，`npm install hexo-renderer-pug`。
 
 **Actions 报 `npm ci` 失败** → `package-lock.json` 没提交，或者与 `package.json` 不一致。本地跑 `npm install` 后把 lock 一起提交。
