@@ -1093,7 +1093,9 @@ inject:
         var ticking = false;
         function apply() {
           var y = window.pageYOffset || document.documentElement.scrollTop || 0;
-          var b = Math.min(y / 60, 8);
+          // 滚过 40% 屏高才开始模糊，避免刚滚动一点就糊
+          var start = (window.innerHeight || 800) * 0.4;
+          var b = Math.min(Math.max((y - start) / 90, 0), 6);
           if (b < 0.15) {
             bg.style.filter = '';
             bg.style.transform = '';
