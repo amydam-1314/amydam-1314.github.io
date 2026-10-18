@@ -1084,6 +1084,20 @@ inject:
       <style>
       .katex-display{overflow-x:auto;overflow-y:hidden;padding:4px 0}
       </style>
+    # 卡片半透明 + 毛玻璃：让壁纸从内容区隐约透出来
+    - |
+      <style>
+      :root{--card-bg:rgba(255,255,255,.66)}
+      [data-theme='dark']{--card-bg:rgba(22,28,40,.62)}
+      #recent-posts>.recent-post-item,
+      #aside-content .card-widget,
+      #post,
+      .flink-item{
+        background-color:var(--card-bg);
+        -webkit-backdrop-filter:blur(10px);
+        backdrop-filter:blur(10px);
+      }
+      </style>
   bottom:
     # 首屏清晰，往下滚动逐渐模糊
     - |
