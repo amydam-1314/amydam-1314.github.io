@@ -87,7 +87,14 @@ exclude:
 ignore:
 
 # Extensions
-theme: landscape
+theme: butterfly
+
+# Search
+search:
+  path: search.xml
+  field: post
+  content: true
+  format: html
 
 # Deployment
 deploy:
