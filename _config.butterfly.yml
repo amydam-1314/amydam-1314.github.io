@@ -92,7 +92,14 @@ footer_img: false
 # Website Background
 # Can set it to color, image URL or an array containing colors and/or image URLs
 # If an array is provided, a random background will be selected from the array on each load
-background:
+#
+# 全站背景壁纸：图片放 source/img/，这里写 /img/文件名（不要自己包 url()，主题会加）
+# 单张：  background: /img/sky.svg
+# 多张（每次刷新随机一张）：
+# background:
+#   - /img/sky.svg
+#   - /img/mesh.svg
+background: /img/sky.svg
 
 cover:
   # Disable the cover or not

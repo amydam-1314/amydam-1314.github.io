@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000">
+  <defs>
+    <linearGradient id="base" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0%" stop-color="#071022"/>
+      <stop offset="55%" stop-color="#0A1830"/>
+      <stop offset="100%" stop-color="#060C18"/>
+    </linearGradient>
+    <radialGradient id="g1" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#2F6BFF" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#2F6BFF" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="g2" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#22D3EE" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#22D3EE" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="g3" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#7C5CFF" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#7C5CFF" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soft" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="70"/>
+    </filter>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+    </filter>
+    <pattern id="lines" width="64" height="64" patternUnits="userSpaceOnUse">
+      <path d="M64 0H0V64" fill="none" stroke="#5B8CFF" stroke-opacity="0.07" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1600" height="1000" fill="url(#base)"/>
+  <g filter="url(#soft)">
+    <ellipse cx="300" cy="180" rx="520" ry="360" fill="url(#g1)"/>
+    <ellipse cx="1260" cy="330" rx="460" ry="300" fill="url(#g3)"/>
+    <ellipse cx="900" cy="890" rx="620" ry="280" fill="url(#g2)"/>
+  </g>
+  <rect width="1600" height="1000" fill="url(#lines)"/>
+  <rect width="1600" height="1000" filter="url(#grain)" opacity="0.16" style="mix-blend-mode:overlay"/>
+  <path d="M0 780C240 720 420 860 700 800s520-180 900-110v310H0Z" fill="#05090F" opacity="0.55"/>
+</svg>

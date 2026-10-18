@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#050B16"/>
+      <stop offset="52%" stop-color="#0B1E3C"/>
+      <stop offset="53%" stop-color="#0A1526"/>
+      <stop offset="100%" stop-color="#04080F"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#7FB2FF" stop-opacity="0.9"/>
+      <stop offset="45%" stop-color="#3B7BFF" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#3B7BFF" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="blur40">
+      <feGaussianBlur stdDeviation="40"/>
+    </filter>
+    <filter id="grain2">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2"/>
+      <feColorMatrix type="saturate" values="0"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="1000" fill="url(#sky)"/>
+  <circle cx="800" cy="520" r="300" fill="url(#sun)" filter="url(#blur40)"/>
+
+  <!-- 透视网格地面 -->
+  <g stroke="#4E8CFF" stroke-opacity="0.28" stroke-width="1" fill="none">
+    <path d="M800 520 L-700 1000 M800 520 L-380 1000 M800 520 L-60 1000 M800 520 L260 1000 M800 520 L580 1000 M800 520 L800 1000 M800 520 L1020 1000 M800 520 L1340 1000 M800 520 L1660 1000 M800 520 L1960 1000 M800 520 L2300 1000"/>
+  </g>
+  <g stroke="#4E8CFF" stroke-opacity="0.22" stroke-width="1" fill="none">
+    <path d="M-200 560H1800"/>
+    <path d="M-260 610H1860"/>
+    <path d="M-340 680H1940"/>
+    <path d="M-450 770H2050"/>
+    <path d="M-600 880H2200"/>
+  </g>
+
+  <!-- 地平线光带 -->
+  <rect x="0" y="513" width="1600" height="2" fill="#8FC0FF" opacity="0.55"/>
+  <rect x="0" y="500" width="1600" height="30" fill="#5B9BFF" opacity="0.12" filter="url(#blur40)"/>
+
+  <rect width="1600" height="1000" filter="url(#grain2)" opacity="0.14" style="mix-blend-mode:overlay"/>
+</svg>

@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000">
+  <defs>
+    <linearGradient id="sky0" x1="0.1" y1="0" x2="0.6" y2="1">
+      <stop offset="0%" stop-color="#EAF3FF"/>
+      <stop offset="45%" stop-color="#DEEBFC"/>
+      <stop offset="100%" stop-color="#E9F2FD"/>
+    </linearGradient>
+    <radialGradient id="glow0" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#9CC4FF" stop-opacity="0.75"/>
+      <stop offset="100%" stop-color="#9CC4FF" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow1" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#7FE3F0" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#7FE3F0" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#B9C8FF" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#B9C8FF" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soft0" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="90"/>
+    </filter>
+    <pattern id="mesh0" width="80" height="80" patternUnits="userSpaceOnUse">
+      <path d="M80 0H0V80" fill="none" stroke="#7FA8DD" stroke-opacity="0.13" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1600" height="1000" fill="url(#sky0)"/>
+
+  <g filter="url(#soft0)">
+    <ellipse cx="280" cy="120" rx="520" ry="340" fill="url(#glow0)"/>
+    <ellipse cx="1320" cy="260" rx="440" ry="300" fill="url(#glow2)"/>
+    <ellipse cx="880" cy="760" rx="600" ry="300" fill="url(#glow1)"/>
+  </g>
+
+  <rect width="1600" height="1000" fill="url(#mesh0)"/>
+
+  <!-- 三条柔和的弧线，给空白处一点呼吸感 -->
+  <g fill="none" stroke="#6E9BDB" stroke-opacity="0.16">
+    <path d="M-100 720C300 620 560 800 900 690s520-180 820-120" stroke-width="1.4"/>
+    <path d="M-100 790C320 690 580 870 930 760s540-180 830-110" stroke-width="1.1"/>
+    <path d="M-100 860C340 770 600 940 960 830s560-170 840-90" stroke-width="0.9"/>
+  </g>
+</svg>
