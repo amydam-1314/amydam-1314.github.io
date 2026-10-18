@@ -65,7 +65,8 @@ disable_top_img: false
 default_top_img:
 
 # The banner image of index page
-index_img: /img/wallpaper.jpg
+# 留空：首页 banner 透明，直接露出全站背景壁纸（背景层由 background 控制）
+index_img:
 
 # The banner image of archive page
 archive_img:
@@ -1065,10 +1066,42 @@ css_prefix: true
 inject:
   head:
     # 内页（归档/标签/关于）顶部 banner：默认是纯蓝 #49b1f5，改成浅蓝渐变
-    # 首页不受影响，首页用的是 index_img 的图（inline style 优先级更高）
-    - '<style>#page-header.not-home-page{background-image:linear-gradient(135deg,#e8f2ff 0%,#d3e5fa 60%,#c6dbf6 100%)}</style>'
+    - |
+      <style>
+      #page-header.not-home-page{background-image:linear-gradient(135deg,#e8f2ff 0%,#d3e5fa 60%,#c6dbf6 100%)}
+      /* 首页 banner 透明：让全站背景壁纸从顶部连续铺满 */
+      #page-header.full_page{background-color:transparent!important;background-image:none!important}
+      /* 标题压在插画上，加投影保证可读 */
+      #page-header.full_page #site-title,
+      #page-header.full_page #site-subtitle{text-shadow:0 2px 16px rgba(6,22,45,.5)}
+      #web_bg{will-change:filter}
+      </style>
   bottom:
-    # - <script src="xxxx"></script>
+    # 首屏清晰，往下滚动逐渐模糊
+    - |
+      <script>
+      (function () {
+        var bg = document.getElementById('web_bg');
+        if (!bg) return;
+        var ticking = false;
+        function apply() {
+          var y = window.pageYOffset || document.documentElement.scrollTop || 0;
+          var b = Math.min(y / 60, 8);
+          if (b < 0.15) {
+            bg.style.filter = '';
+            bg.style.transform = '';
+          } else {
+            bg.style.filter = 'blur(' + b.toFixed(1) + 'px)';
+            bg.style.transform = 'scale(' + (1 + b * 0.007).toFixed(3) + ')';
+          }
+          ticking = false;
+        }
+        window.addEventListener('scroll', function () {
+          if (!ticking) { ticking = true; requestAnimationFrame(apply); }
+        }, { passive: true });
+        apply();
+      })();
+      </script>
 
 # CDN Settings
 # Don't modify the following settings unless you know how they work
