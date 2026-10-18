@@ -99,7 +99,7 @@ footer_img: false
 # background:
 #   - /img/sky.svg
 #   - /img/mesh.svg
-background: /img/sky.svg
+background: /img/wallpaper.jpg
 
 cover:
   # Disable the cover or not
